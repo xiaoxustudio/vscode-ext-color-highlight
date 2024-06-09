@@ -54,7 +54,7 @@ export async function findScssVars(text, importerOptions) {
 
   varNames = sortStringsInDescendingOrder(varNames);
 
-  const varNamesRegex = new RegExp(`\\$(${varNames.join('|')})(?!-|\\s*:)`, 'g');
+  const varNamesRegex = new RegExp(`\\$(${varNames.join('|')})(?!-|\\S*:)`, 'g');
 
   match = varNamesRegex.exec(text);
 
@@ -71,7 +71,6 @@ export async function findScssVars(text, importerOptions) {
 
     match = varNamesRegex.exec(text);
   }
-
 
   return result;
 }
